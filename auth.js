@@ -61,7 +61,7 @@ function promptPassword(message) {
 const users = [
     // Format: { name: "Name", id: "123456" }
     { name: "Jamie Kirby", id: "154122" },
-    { name: "Mary Johnson", id: "100002" },
+    { name: "Cory Kilmartin", id: "040711" },
     { name: "David Brown", id: "100003" },
     { name: "Sarah Wilson", id: "100004" },
     { name: "Michael Davis", id: "100005" },
