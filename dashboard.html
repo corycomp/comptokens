@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Comp Token System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://www.stpatrickscomprehensive.ie/uploads/2/3/2/0/23206024/editor/st-patrick-s-comp-logo-layout-2-1.png?1564671961" 
+                     alt="St Patrick's Logo" 
+                     class="sidebar-logo">
+                <h2>Token System</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="menu-item active">
+                    <a href="dashboard.html">
+                        <span class="icon">📊</span>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="overview.html">
+                        <span class="icon">📈</span>
+                        <span>Overview</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="assign.html">
+                        <span class="icon">➕</span>
+                        <span>Assign Token(s)</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+                <button id="clearAllBtn" class="btn btn-danger">Clear Everything</button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-header animate-fade-in">
+                <h1 id="greetingText">Good Morning, User</h1>
+                <div class="user-details">
+                    <p class="user-info" id="userInfo"></p>
+                    <p class="user-info" id="loginInfo"></p>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Total Tokens Card -->
+                <div class="card animate-slide-up" style="animation-delay: 0.1s;">
+                    <div class="card-header">
+                        <h3>Total Tokens Assigned</h3>
+                        <span class="icon">🎯</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="stat-number" id="totalTokens">0</div>
+                        <p class="stat-label">Tokens distributed by you</p>
+                    </div>
+                </div>
+
+                <!-- Recent Activity Card -->
+                <div class="card animate-slide-up" style="animation-delay: 0.2s;">
+                    <div class="card-header">
+                        <h3>Recent Activity</h3>
+                        <span class="icon">📋</span>
+                    </div>
+                    <div class="card-body">
+                        <div id="recentActivity" class="activity-list">
+                            <p class="no-activity">No recent activity</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats Card -->
+                <div class="card animate-slide-up" style="animation-delay: 0.3s;">
+                    <div class="card-header">
+                        <h3>Quick Stats</h3>
+                        <span class="icon">⚡</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="quick-stats">
+                            <div class="stat-item">
+                                <span class="stat-value" id="assignmentCount">0</span>
+                                <span class="stat-label">Assignments Made</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value" id="todayCount">0</span>
+                                <span class="stat-label">Today</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Goodbye Screen -->
+    <div id="goodbyeScreen" class="loading-screen hidden">
+        <div class="loading-content goodbye-content">
+            <h2 class="goodbye-text">Goodbye! 👋</h2>
+            <p>See you soon!</p>
+            <div class="spinner"></div>
+            <p class="logging-out-text">Logging out...</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>St Patricks Comprehensive Token System - Created by Cory Kilmartin</p>
+    </footer>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

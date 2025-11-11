@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comp Token System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="landing-page">
+    <div class="landing-container">
+        <div class="logo-section animate-fade-in">
+            <img src="https://www.stpatrickscomprehensive.ie/uploads/2/3/2/0/23206024/editor/st-patrick-s-comp-logo-layout-2-1.png?1564671961" 
+                 alt="St Patrick's Comprehensive School Logo" 
+                 class="school-logo">
+            <h1 class="main-title">🏆 Comp Token System 🏆</h1>
+            <p class="subtitle">St Patrick's Comprehensive School</p>
+        </div>
+        
+        <div class="login-card animate-slide-up">
+            <h2>Welcome Back!</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Name</label>
+                    <input type="text" id="username" name="username" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="userId">User ID</label>
+                    <input type="text" id="userId" name="userId" required placeholder="6-digit ID" maxlength="6" pattern="[0-9]{6}">
+                </div>
+                <button type="submit" class="btn btn-primary btn-large">
+                    <span>Sign In</span>
+                    <span class="btn-icon">→</span>
+                </button>
+            </form>
+            
+            <div class="admin-section">
+                <button id="adminHistoryBtn" class="btn btn-secondary btn-admin">
+                    <span>📊 Admin History</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen hidden">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <h2>Just a second!</h2>
+            <p>Loading your dashboard...</p>
+        </div>
+    </div>
+
+    <!-- Admin History Modal -->
+    <div id="adminHistoryModal" class="modal hidden">
+        <div class="modal-content admin-modal">
+            <div class="modal-header">
+                <h2>📊 Complete Assignment History</h2>
+                <button class="close-modal" id="closeAdminModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="adminHistoryContent" class="admin-history-content">
+                    <p class="no-history">No assignments recorded yet</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>St Patricks Comprehensive Token System - Created by Cory Kilmartin</p>
+    </footer>
+
+    <script src="auth.js"></script>
+</body>
+</html>

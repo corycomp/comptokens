@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview - Comp Token System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://www.stpatrickscomprehensive.ie/uploads/2/3/2/0/23206024/editor/st-patrick-s-comp-logo-layout-2-1.png?1564671961" 
+                     alt="St Patrick's Logo" 
+                     class="sidebar-logo">
+                <h2>Token System</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="menu-item">
+                    <a href="dashboard.html">
+                        <span class="icon">📊</span>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item active">
+                    <a href="overview.html">
+                        <span class="icon">📈</span>
+                        <span>Overview</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="assign.html">
+                        <span class="icon">➕</span>
+                        <span>Assign Token(s)</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+                <button id="clearAllBtn" class="btn btn-danger">Clear Everything</button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-header animate-fade-in">
+                <h1>House Overview</h1>
+                <p>Track token distribution across all houses</p>
+            </div>
+
+            <div class="overview-container">
+                <!-- Bar Chart Card -->
+                <div class="card chart-card animate-slide-up">
+                    <div class="card-header">
+                        <h3>Token Distribution</h3>
+                        <span class="icon">📊</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <div class="chart-y-axis" id="chartYAxis">
+                                <!-- Y-axis labels will be generated dynamically -->
+                            </div>
+                            <div class="chart-bars" id="chartBars">
+                                <!-- Bars will be generated dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary Table Card -->
+                <div class="card table-card animate-slide-up" style="animation-delay: 0.2s;">
+                    <div class="card-header">
+                        <h3>House Totals</h3>
+                        <span class="icon">🏠</span>
+                    </div>
+                    <div class="card-body">
+                        <table class="token-table">
+                            <thead>
+                                <tr>
+                                    <th>House</th>
+                                    <th>Total Tokens</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="houseTableBody">
+                                <!-- Rows will be generated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Goodbye Screen -->
+    <div id="goodbyeScreen" class="loading-screen hidden">
+        <div class="loading-content goodbye-content">
+            <h2 class="goodbye-text">Goodbye! 👋</h2>
+            <p>See you soon!</p>
+            <div class="spinner"></div>
+            <p class="logging-out-text">Logging out...</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>St Patricks Comprehensive Token System - Created by Cory Kilmartin</p>
+    </footer>
+
+    <script src="overview.js"></script>
+</body>
+</html>

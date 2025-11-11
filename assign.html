@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assign Tokens - Comp Token System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://www.stpatrickscomprehensive.ie/uploads/2/3/2/0/23206024/editor/st-patrick-s-comp-logo-layout-2-1.png?1564671961" 
+                     alt="St Patrick's Logo" 
+                     class="sidebar-logo">
+                <h2>Token System</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="menu-item">
+                    <a href="dashboard.html">
+                        <span class="icon">📊</span>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="overview.html">
+                        <span class="icon">📈</span>
+                        <span>Overview</span>
+                    </a>
+                </li>
+                <li class="menu-item active">
+                    <a href="assign.html">
+                        <span class="icon">➕</span>
+                        <span>Assign Token(s)</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+                <button id="clearAllBtn" class="btn btn-danger">Clear Everything</button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-header animate-fade-in">
+                <h1>Assign Token(s)</h1>
+                <p>Reward houses with tokens</p>
+            </div>
+
+            <div class="assign-container">
+                <!-- Assign Button Card -->
+                <div class="card assign-card animate-slide-up">
+                    <button id="assignTokenBtn" class="btn btn-primary btn-large btn-assign">
+                        <span>➕ Assign Token(s)</span>
+                    </button>
+                </div>
+
+                <!-- History Card -->
+                <div class="card history-card animate-slide-up" style="animation-delay: 0.2s;">
+                    <div class="card-header">
+                        <h3>Assignment History</h3>
+                        <span class="icon">📜</span>
+                    </div>
+                    <div class="card-body">
+                        <div id="assignmentHistory" class="history-list">
+                            <p class="no-history">No assignments yet</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Assign Token Modal -->
+    <div id="assignModal" class="modal hidden">
+        <div class="modal-content animate-scale-in">
+            <div class="modal-header">
+                <h2>Assign Token(s)</h2>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="assignForm">
+                    <div class="form-group">
+                        <label for="houseSelect">Select House</label>
+                        <select id="houseSelect" name="house" required class="select-input">
+                            <option value="">-- Choose a House --</option>
+                            <option value="Ide">Ide</option>
+                            <option value="Bride">Bride</option>
+                            <option value="Seanan">Seanan</option>
+                            <option value="Conaire">Conaire</option>
+                            <option value="Padraig">Padraig</option>
+                            <option value="Tola">Tola</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select Category</label>
+                        <div class="category-grid">
+                            <label class="category-option">
+                                <input type="radio" name="category" value="General: 1" required>
+                                <span class="category-label">
+                                    <span class="category-name">General</span>
+                                    <span class="category-tokens">1 token</span>
+                                </span>
+                            </label>
+                            <label class="category-option">
+                                <input type="radio" name="category" value="General: 5" required>
+                                <span class="category-label">
+                                    <span class="category-name">General</span>
+                                    <span class="category-tokens">5 tokens</span>
+                                </span>
+                            </label>
+                            <label class="category-option">
+                                <input type="radio" name="category" value="General: 10" required>
+                                <span class="category-label">
+                                    <span class="category-name">General</span>
+                                    <span class="category-tokens">10 tokens</span>
+                                </span>
+                            </label>
+                            <label class="category-option">
+                                <input type="radio" name="category" value="General: 20" required>
+                                <span class="category-label">
+                                    <span class="category-name">General</span>
+                                    <span class="category-tokens">20 tokens</span>
+                                </span>
+                            </label>
+                            <label class="category-option">
+                                <input type="radio" name="category" value="Club Participation: 5" required>
+                                <span class="category-label">
+                                    <span class="category-name">Club Participation</span>
+                                    <span class="category-tokens">5 tokens</span>
+                                </span>
+                            </label>
+                            <label class="category-option">
+                                <input type="radio" name="category" value="Sports Participation: 5" required>
+                                <span class="category-label">
+                                    <span class="category-name">Sports Participation</span>
+                                    <span class="category-tokens">5 tokens</span>
+                                </span>
+                            </label>
+                            <label class="category-option">
+                                <input type="radio" name="category" value="School Challenge Win: 10" required>
+                                <span class="category-label">
+                                    <span class="category-name">School Challenge Win</span>
+                                    <span class="category-tokens">10 tokens</span>
+                                </span>
+                            </label>
+                            <label class="category-option">
+                                <input type="radio" name="category" value="Personal Challenge/Achievement: 10" required>
+                                <span class="category-label">
+                                    <span class="category-name">Personal Challenge/Achievement</span>
+                                    <span class="category-tokens">10 tokens</span>
+                                </span>
+                            </label>
+                            <label class="category-option">
+                                <input type="radio" name="category" value="National Champion: 20" required>
+                                <span class="category-label">
+                                    <span class="category-name">National Champion</span>
+                                    <span class="category-tokens">20 tokens</span>
+                                </span>
+                            </label>
+                            <label class="category-option">
+                                <input type="radio" name="category" value="World Champion: 25" required>
+                                <span class="category-label">
+                                    <span class="category-name">World Champion</span>
+                                    <span class="category-tokens">25 tokens</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal hidden">
+        <div class="modal-content success-modal animate-bounce-in">
+            <div class="success-icon">✓</div>
+            <h2>Success!</h2>
+            <p id="successMessage"></p>
+            <button id="closeSuccess" class="btn btn-primary">Great!</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>St Patricks Comprehensive Token System - Created by Cory Kilmartin</p>
+    </footer>
+
+    <!-- Goodbye Screen -->
+    <div id="goodbyeScreen" class="loading-screen hidden">
+        <div class="loading-content goodbye-content">
+            <h2 class="goodbye-text">Goodbye! 👋</h2>
+            <p>See you soon!</p>
+            <div class="spinner"></div>
+            <p class="logging-out-text">Logging out...</p>
+        </div>
+    </div>
+
+    <audio id="successSound" src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBjGJ0fPTgjMGHm7A7+OZSA0PVqzn7K5aGAg+ltryxmwfBSmB0fLaizsIGGS56eSlUBELTKXh8bllHAU2jdXzzn0pBSp+zPDajkEKElyx5+ytWhgIOJPY88p0JwUme8rx3I4+CRVat+ftr1sZCDyU2PLJcSQFKH3L8duOPwoUWrjn7a9bGQg8lNjyyXEkBSh+y/HbjT8KFVq45+2vWxkIPJTY8spwJAUpfs3w3I4/ChVauOftrlsZCDyU2PLKcCQFKX7N8N+OQAwWXLnm6qZVFgpBmN7xx2kdBTiP0vPPejAGKYDO8N6PRAoUXbbm66xYGAk/l9vyxWoeBS6Czezdj0MLGWO76OajUhEMTqfh8LZkHgQ4jtTy0HwqBSp9y/LbjUAKFV+16e2tVxgJP5fZ8cRnHQUtgM3w3I9DCxljvOjno1ITC06n4fC2ZCEEOYzU8s98KgUqf8vw3I0/ChVftOXqp1kXCT+W2fHEZhwFLYDN8NyPQwsZY73o5qNSEwxOp+HwtmQhBDmM1PLPfCsGK4DN79yNPwoUXrPl66lYGQk+ltrzxGYbBSx/y+/djkAJE12z5uqpVxcHPpXY88VoGwYtgM/v3Y9CCxljvOjmo1ISC06o4fC2YyAFN4vU88+AKwQpfs/w3Y4/ChVftOftrlkYCD+Y2vLGaB0GLoHM7tyOQQsWY7zo5qNSEgtOqOHxtWQgBjiM1PLPgSsEKX/P8N2OPwoVX7Tn7a5ZGAg/mNryyGgdBi+Cze7cjkAKFmK76Oim") type="audio/wav"></audio>
+
+    <script src="assign.js"></script>
+</body>
+</html>
