@@ -40,8 +40,8 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
 });
 
 // Admin History Button Handler
-document.getElementById('adminHistoryBtn').addEventListener('click', function() {
-    const code = prompt('Enter admin code:');
+document.getElementById('adminHistoryBtn').addEventListener('click', async function() {
+    const code = await promptPassword('Enter admin code:');
     
     if (code === '111120251966') {
         showAdminHistory();

@@ -118,8 +118,8 @@ document.getElementById('logoutBtn')?.addEventListener('click', function() {
 });
 
 // Clear Everything handler
-document.getElementById('clearAllBtn')?.addEventListener('click', function() {
-    const code = promptPassword('Enter the code to clear all data:');
+document.getElementById('clearAllBtn')?.addEventListener('click', async function() {
+    const code = await promptPassword('Enter the code to clear all data:');
     
     if (code === '111120251966') {
         const confirm = window.confirm('Are you ABSOLUTELY sure? This will delete ALL token data and cannot be undone!');
