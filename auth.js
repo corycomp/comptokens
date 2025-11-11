@@ -1,3 +1,62 @@
+// Custom password prompt function
+function promptPassword(message) {
+    // Create modal HTML
+    const modalHTML = `
+        <div id="passwordModal" class="modal" style="display: flex;">
+            <div class="modal-content password-modal animate-scale-in">
+                <div class="modal-header">
+                    <h3>${message}</h3>
+                </div>
+                <div class="modal-body">
+                    <input type="password" id="passwordInput" class="password-input" placeholder="Enter code" maxlength="12" autocomplete="off">
+                    <div class="modal-buttons">
+                        <button id="passwordOk" class="btn btn-primary">OK</button>
+                        <button id="passwordCancel" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Add modal to body
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    
+    const modal = document.getElementById('passwordModal');
+    const input = document.getElementById('passwordInput');
+    const okBtn = document.getElementById('passwordOk');
+    const cancelBtn = document.getElementById('passwordCancel');
+    
+    // Focus input
+    setTimeout(() => input.focus(), 100);
+    
+    return new Promise((resolve) => {
+        okBtn.onclick = () => {
+            const value = input.value;
+            modal.remove();
+            resolve(value);
+        };
+        
+        cancelBtn.onclick = () => {
+            modal.remove();
+            resolve(null);
+        };
+        
+        input.onkeypress = (e) => {
+            if (e.key === 'Enter') {
+                okBtn.click();
+            } else if (e.key === 'Escape') {
+                cancelBtn.click();
+            }
+        };
+        
+        modal.onclick = (e) => {
+            if (e.target === modal) {
+                cancelBtn.click();
+            }
+        };
+    });
+}
+
 // Sample users database - Easy to copy and paste format
 const users = [
     // Format: { name: "Name", id: "123456" }
