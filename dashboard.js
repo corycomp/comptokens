@@ -12,7 +12,15 @@ script.onload = function() {
     // Set greeting
     const greeting = getGreeting();
     document.getElementById('greetingText').textContent = `${greeting}, ${user.name}`;
-    document.getElementById('userInfo').textContent = `ID: ${user.id}`;
+    
+    // Set up protected ID display
+    const userInfoEl = document.getElementById('userInfo');
+    userInfoEl.innerHTML = `ID: <span class="id-protected" id="protectedId" data-id="${user.id}">████████</span>`;
+    
+    // Add click handler for ID reveal
+    document.getElementById('protectedId').addEventListener('click', function() {
+        showIdConfirmation(user.id);
+    });
     
     // Display login time
     if (user.loginTime) {
@@ -94,6 +102,59 @@ function animateNumber(element, target) {
             element.textContent = Math.floor(current);
         }
     }, 16);
+}
+
+function showIdConfirmation(userId) {
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'modal-overlay';
+    
+    // Create modal
+    const modal = document.createElement('div');
+    modal.className = 'modal-box';
+    modal.innerHTML = `
+        <h3>View PIN Confirmation</h3>
+        <p>Are you sure you want to view your PIN?</p>
+        <div class="modal-buttons">
+            <button class="btn btn-secondary" id="cancelBtn">No</button>
+            <button class="btn btn-primary" id="confirmBtn">Yes</button>
+        </div>
+    `;
+    
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
+    
+    // Handle No button
+    document.getElementById('cancelBtn').addEventListener('click', function() {
+        document.body.removeChild(overlay);
+    });
+    
+    // Handle Yes button
+    document.getElementById('confirmBtn').addEventListener('click', function() {
+        document.body.removeChild(overlay);
+        revealId(userId);
+    });
+    
+    // Close on overlay click
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) {
+            document.body.removeChild(overlay);
+        }
+    });
+}
+
+function revealId(userId) {
+    const protectedEl = document.getElementById('protectedId');
+    protectedEl.classList.remove('id-protected');
+    protectedEl.classList.add('id-revealed');
+    protectedEl.textContent = userId;
+    
+    // Hide again after 5 seconds
+    setTimeout(() => {
+        protectedEl.classList.remove('id-revealed');
+        protectedEl.classList.add('id-protected');
+        protectedEl.textContent = '████████';
+    }, 5000);
 }
 
 // Animate stat numbers when page loads
