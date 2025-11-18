@@ -332,15 +332,44 @@ body {
     margin: var(--spacing-lg) 0 var(--spacing-sm);
 }
 
+.goodbye-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-lg);
+}
+
+.goodbye-hand {
+    font-size: 5rem;
+    animation: handWaveFlyAway 2s ease-in-out infinite;
+    transform-origin: 70% 70%;
+}
+
 .goodbye-content .goodbye-text {
     font-size: 3rem;
-    animation: wave 1s ease-in-out;
+    margin: 0;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.goodbye-content .goodbye-message {
+    font-size: 1.3rem;
+    margin: 0;
+    opacity: 0.9;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.goodbye-divider {
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    animation: expandWidth 1s ease-out;
 }
 
 .goodbye-content .logging-out-text {
-    margin-top: var(--spacing-md);
-    font-size: 1.2rem;
-    opacity: 0.9;
+    margin: 0;
+    font-size: 1.1rem;
+    opacity: 0.8;
+    animation: fadeInUp 1.2s ease-out;
 }
 
 .spinner {
@@ -509,8 +538,8 @@ body {
 
 /* Protected ID Styles */
 .id-protected {
-    background-color: #a0a0a0;
-    color: #000;
+    background-color: #afafaf;
+    color: #afafaf;
     padding: 2px 8px;
     border-radius: 4px;
     cursor: pointer;
@@ -520,7 +549,7 @@ body {
 }
 
 .id-protected:hover {
-    background-color: #b8b8b8;
+    background-color: #afafaf;
 }
 
 .id-revealed {
@@ -1447,15 +1476,60 @@ body {
     }
 }
 
-@keyframes wave {
-    0%, 100% {
-        transform: rotate(0deg);
+@keyframes handWaveFlyAway {
+    0%, 10% {
+        transform: rotate(0deg) translateY(0) translateX(0);
+    }
+    15% {
+        transform: rotate(-20deg) translateY(0) translateX(0);
     }
     25% {
-        transform: rotate(-10deg);
+        transform: rotate(20deg) translateY(0) translateX(0);
+    }
+    35% {
+        transform: rotate(-20deg) translateY(0) translateX(0);
+    }
+    45% {
+        transform: rotate(20deg) translateY(0) translateX(0);
+    }
+    55% {
+        transform: rotate(-15deg) translateY(0) translateX(0);
+    }
+    65% {
+        transform: rotate(10deg) translateY(0) translateX(0);
     }
     75% {
-        transform: rotate(10deg);
+        transform: rotate(0deg) translateY(0) translateX(0) scale(1);
+    }
+    85% {
+        transform: rotate(45deg) translateY(-30px) translateX(30px) scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(45deg) translateY(-100px) translateX(100px) scale(0.3);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes expandWidth {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+    to {
+        width: 100px;
+        opacity: 1;
     }
 }
 
