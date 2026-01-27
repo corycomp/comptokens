@@ -59,26 +59,29 @@ function promptPassword(message) {
 
 // Sample users database - Easy to copy and paste format
 const users = [
-    // Format: { name: "Name", id: "123456" }
-    { name: "Jamie Kirby", id: "154122" },
-    { name: "Cory Kilmartin", id: "040711" },
-    { name: "David Brown", id: "100003" },
-    { name: "Sarah Wilson", id: "100004" },
-    { name: "Michael Davis", id: "100005" },
+    // Format: { name: "Name" }
+    { name: "Jamie Kirby" },
+    { name: "Cory Kilmartin" },
+    { name: "David Brown" },
+    { name: "Sarah Wilson" },
+    { name: "Michael Davis" },
     // Add more users here following the same format
 ];
+
+// Universal PIN
+const UNIVERSAL_PIN = "1966";
 
 // Login form handler
 document.getElementById('loginForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
     const username = document.getElementById('username').value.trim();
-    const userId = document.getElementById('userId').value.trim();
+    const pin = document.getElementById('pin').value.trim();
     
     // Find user in database
-    const user = users.find(u => u.name === username && u.id === userId);
+    const user = users.find(u => u.name === username);
     
-    if (user) {
+    if (user && pin === UNIVERSAL_PIN) {
         // Store user session with login timestamp
         const userSession = {
             ...user,
@@ -94,7 +97,7 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
             window.location.href = 'dashboard.html';
         }, 2000);
     } else {
-        alert('Invalid credentials. Please check your name and ID.');
+        alert('Invalid credentials. Please check your name and PIN.');
     }
 });
 
